@@ -6,7 +6,7 @@ Official pytorch implementation of **[DenseFusion-1M: Merging Vision Experts for
 </p>
 
 
-- **Authors**: [Xiaotong Li](https://scholar.google.com/citations?user=cpCE_T4AAAAJ&hl=zh-CN), [Fan Zhang](https://scholar.google.com/citations?user=VsJ39HMAAAAJ), [Haiwen Diao](https://scholar.google.com/citations?user=46eCjHQAAAAJ&hl=zh-CN), [Yueze Wang](https://openreview.net/profile?id=~Yueze_Wang1), [Xinling Wang](https://scholar.google.com/citations?user=DPz0DjYAAAAJ&hl=zh-CN), [Ling-Yu Duan](https://scholar.google.com/citations?user=hsXZOgIAAAAJ&hl=zh-CN).
+- **Authors**: [Xiaotong Li](https://scholar.google.com/citations?user=cpCE_T4AAAAJ&hl=zh-CN), [Fan Zhang](https://scholar.google.com/citations?user=VsJ39HMAAAAJ), [Haiwen Diao](https://scholar.google.com/citations?user=46eCjHQAAAAJ&hl=zh-CN), [Yueze Wang](https://openreview.net/profile?id=~Yueze_Wang1), [Xinlong Wang](https://scholar.google.com/citations?user=DPz0DjYAAAAJ&hl=zh-CN), [Ling-Yu Duan](https://scholar.google.com/citations?user=hsXZOgIAAAAJ&hl=zh-CN).
 - **Institutes**:  Peking University; Beijing Academy of Artificial Intelligence; Dalian University of Technology
 - **Dataset**: [🤗[DenseFusion-4V-100K](https://huggingface.co/datasets/BAAI/DenseFusion-1M/blob/main/DenseFusion-4V-100k.jsonl)], [🤗[DenseFusion-1M](https://huggingface.co/datasets/BAAI/DenseFusion-1M/blob/main/DenseFusion-1M.jsonl)]
 
