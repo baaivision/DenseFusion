@@ -6,12 +6,13 @@ Official pytorch implementation of **[DenseFusion-1M: Merging Vision Experts for
 </p>
 
 
-- **Authors**: [Xiaotong Li](https://scholar.google.com/citations?user=cpCE_T4AAAAJ&hl=zh-CN), [Fan Zhang](https://scholar.google.com/citations?user=VsJ39HMAAAAJ), [Haiwen Diao](https://scholar.google.com/citations?user=46eCjHQAAAAJ&hl=zh-CN), [Yueze Wang](https://openreview.net/profile?id=~Yueze_Wang1), [Xinlong Wang](https://scholar.google.com/citations?user=DPz0DjYAAAAJ&hl=zh-CN), [Ling-Yu Duan](https://scholar.google.com/citations?user=hsXZOgIAAAAJ&hl=zh-CN).
+- **Authors**: [Xiaotong Li](https://scholar.google.com/citations?user=cpCE_T4AAAAJ&hl=zh-CN), [Fan Zhang](https://scholar.google.com/citations?user=VsJ39HMAAAAJ), [Haiwen Diao](https://scholar.google.com/citations?user=46eCjHQAAAAJ&hl=zh-CN), [Yueze Wang](https://openreview.net/profile?id=~Yueze_Wang1), [Xinling Wang](https://scholar.google.com/citations?user=DPz0DjYAAAAJ&hl=zh-CN), [Ling-Yu Duan](https://scholar.google.com/citations?user=hsXZOgIAAAAJ&hl=zh-CN).
 - **Institutes**:  Peking University; Beijing Academy of Artificial Intelligence; Dalian University of Technology
 - **Dataset**: [🤗[DenseFusion-4V-100K](https://huggingface.co/datasets/BAAI/DenseFusion-1M/blob/main/DenseFusion-4V-100k.jsonl)], [🤗[DenseFusion-1M](https://huggingface.co/datasets/BAAI/DenseFusion-1M/blob/main/DenseFusion-1M.jsonl)]
 
 ## 📜 News
 [2024/07/12] The [paper](http://arxiv.org/abs/2407.08303) and [dataset](https://huggingface.co/datasets/BAAI/DenseFusion-1M) are released ! 💥   
+[2024/07/30] The image zips are uploading to Huggingface! The training recipe and code using DenseFusion-1M are released.
 
 ## 💡 Introduction
 - *"An image is worth a thousand words"*. Comprehensive image descriptions are essential for multi-modal perception, while images contains various visual elements of different granularities that are challenging to harness.
@@ -29,6 +30,7 @@ Official pytorch implementation of **[DenseFusion-1M: Merging Vision Experts for
 - We carefully select 1M highly representative images from uncurated LAION dataset through *Semantic Clustering and De-duplication*.
 - Through perceptual fusion, we obtain the comprehensive image-text data *DenseFusion-4V-100K* and *DenseFusion-1M*.
 - You can download the dataset from the 🤗[Huggingface](https://huggingface.co/datasets/BAAI/DenseFusion-1M) and images can be obtained from the urls using the `./download/download.py`.
+- For convenience, we are uploading the image zips to Huggingface and it will take a while.
 
 |Dataset| Captioned by |Link|
 |---|---|---|
@@ -57,6 +59,33 @@ The high-quality image-text data brings consistent and significant improvements,
 | LLaVA-S<sup>2</sup>-7B | Vicuna_7B | 68.2 | 79.7 | 63.3 | 60.8 | 1520 | 66.4 | 67.2 | 86.7 | 34.6 |
 | DenseFusion-S<sup>2</sup>-7B | Vicuna_7B | 72.1 | 81.6 | 65.3 | 67.4 | 1551 | 70.7 | 71.1 | 87.2 | 37.5| 
 
+## Training with DenseFusion-1M
+DenseFusion training consists of three stages: (1) feature alignment stage: we first adopt our high-quality DenseFusion-1M to pre-align the MLP connector with a *frozen pretrained* vision encoder and a *frozen LLM*; (2) pre-training stage: we adopt our DesneFusion-1M data for pre-training stage and unfreeze the half of the vision encoder, the MLP connector, and the LLM. (3) visual instruction tuning stage: we adopt the original LLaVA-mix-665K data to teach the model to follow multimodal instructions.
+
+The training scripts are under `/scripts/densefusion`. The pre-trained vision encoder and language model will be automatically download.
+- Low-resolution MLLM: we use the architeture of LLaVA-1.5 for Low-resolution MLLM training. You can launch the script throught the following instruction:  
+```
+bash scripts/densefusion/train.sh ${WORLD_SIZE} ${RANK} ${MASTER_PORT} ${MASTER_ADDR}
+```
+- High-resolution MLLM: we use the architeture of LLaVA-S2 for High-resolution MLLM training.
+You should install `s2wrapper` through pip install, and you can launch the script throught the following instruction:  
+```bash
+pip install git+https://github.com/bfshi/scaling_on_scales.git
+```
+```
+bash scripts/densefusion/train_s2.sh ${WORLD_SIZE} ${RANK} ${MASTER_PORT} ${MASTER_ADDR}
+```
+
+The experiment is trained on 16 A100 GPUs with 40GB memory. The overall training cost around 15 hours. To train on fewer GPUs, you can reduce the `per_device_train_batch_size` and increase the `gradient_accumulation_steps` accordingly. Always keep the global batch size the same: `per_device_train_batch_size` x `gradient_accumulation_steps` x `num_gpus`.
+
+We provide the source data of DenseFusion-1M, you can instruct your own conversations following LLaVA configuration.
+
+## Evaluation
+
+To ensure the reproducibility, we evaluate the models with greedy decoding. We do not evaluate using beam search to make the inference process consistent with the chat demo of real-time outputs. The evaluation follows the implementation of [LLaVA-v1.5](https://github.com/haotian-liu/LLaVA).
+
+See [Evaluation.md](docs/Evaluation.md).
+
 
 
 ## ❤️ Acknowledgments 
@@ -71,5 +100,9 @@ If **DenseFusion** is helpful for your research, please consider **star** ⭐ an
       title={DenseFusion-1M: Merging Vision Experts for Comprehensive Multimodal Perception}, 
       author={Xiaotong Li and Fan Zhang and Haiwen Diao and Yueze Wang and Xinlong Wang and Ling-Yu Duan},
       year={2024},
-      journal={2407.08303},
+      journal={2407.08303
+},
 ```
+
+## 📄 License
+The content of this project itself is licensed under [LICENSE](https://github.com/baaivision/DenseFusion/blob/main/LICENSE).
