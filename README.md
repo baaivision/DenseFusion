@@ -12,7 +12,8 @@ Official pytorch implementation of **[DenseFusion-1M: Merging Vision Experts for
 
 ## 📜 News
 [2024/07/12] The [paper](http://arxiv.org/abs/2407.08303) and [dataset](https://huggingface.co/datasets/BAAI/DenseFusion-1M) are released ! 💥   
-[2024/07/30] The image zips are uploading to Huggingface! The training recipe and code using DenseFusion-1M are released.
+[2024/07/30] The training recipe and code using DenseFusion-1M are released.    
+[2024/08/22] We have uploaded all image zips to Huggingface. This will make it convenient for you to explore and enjoy the dataset.
 
 ## 💡 Introduction
 - *"An image is worth a thousand words"*. Comprehensive image descriptions are essential for multi-modal perception, while images contains various visual elements of different granularities that are challenging to harness.
@@ -30,7 +31,7 @@ Official pytorch implementation of **[DenseFusion-1M: Merging Vision Experts for
 - We carefully select 1M highly representative images from uncurated LAION dataset through *Semantic Clustering and De-duplication*.
 - Through perceptual fusion, we obtain the comprehensive image-text data *DenseFusion-4V-100K* and *DenseFusion-1M*.
 - You can download the dataset from the 🤗[Huggingface](https://huggingface.co/datasets/BAAI/DenseFusion-1M) and images can be obtained from the urls using the `./download/download.py`.
-- For convenience, we are uploading the image zips to Huggingface and it will take a while.
+- For convenience, we have uploaded all image zips to Huggingface. Enjoy it! (Note that the use of these images must comply with the LAION license.)
 
 |Dataset| Captioned by |Link|
 |---|---|---|
