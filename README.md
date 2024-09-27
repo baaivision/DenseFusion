@@ -11,9 +11,10 @@ Official pytorch implementation of **[DenseFusion-1M: Merging Vision Experts for
 - **Dataset**: [🤗[DenseFusion-4V-100K](https://huggingface.co/datasets/BAAI/DenseFusion-1M/blob/main/DenseFusion-4V-100k.jsonl)], [🤗[DenseFusion-1M](https://huggingface.co/datasets/BAAI/DenseFusion-1M/blob/main/DenseFusion-1M.jsonl)]
 
 ## 📜 News
-[2024/07/12] The [paper](http://arxiv.org/abs/2407.08303) and [dataset](https://huggingface.co/datasets/BAAI/DenseFusion-1M) are released ! 💥   
-[2024/07/30] The training recipe and code using DenseFusion-1M are released.    
+[2024/09/26] 🔥🔥🔥 Our work **DenseFusion** has been accepted by **NeurIPS 2024**. Congratulations!  
 [2024/08/22] We have uploaded all image zips to Huggingface. This will make it convenient for you to explore and enjoy the dataset.
+[2024/07/30] The training recipe and code using DenseFusion-1M are released.    
+[2024/07/12] The [paper](http://arxiv.org/abs/2407.08303) and [dataset](https://huggingface.co/datasets/BAAI/DenseFusion-1M) are released ! 💥   
 
 ## 💡 Introduction
 - *"An image is worth a thousand words"*. Comprehensive image descriptions are essential for multi-modal perception, while images contains various visual elements of different granularities that are challenging to harness.
