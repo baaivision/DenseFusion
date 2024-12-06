@@ -102,8 +102,8 @@ If **DenseFusion** is helpful for your research, please consider **star** ⭐ an
       title={DenseFusion-1M: Merging Vision Experts for Comprehensive Multimodal Perception}, 
       author={Xiaotong Li and Fan Zhang and Haiwen Diao and Yueze Wang and Xinlong Wang and Ling-Yu Duan},
       year={2024},
-      journal={2407.08303
-},
+      journal={2407.08303},
+}
 ```
 
 ## 📄 License
